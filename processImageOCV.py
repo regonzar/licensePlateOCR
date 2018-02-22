@@ -143,7 +143,7 @@ def secondFilter(img):
             break
 
     for i, mean in enumerate(reversed(row_mean)):
-        if mean < 255:
+        if mean < 250:
             img[len(row_mean) - i - 1, :] = 255
         else:
             break
@@ -186,7 +186,7 @@ def getBoundingBoxes(img):
     for c in cnt:
         x, y, w, h = cv2.boundingRect(c)
 
-        if w*h > 8000 and w*h < 25000:
+        if w*h > 5000 and w*h < 25000:
             box_mask = cv2.rectangle(box_mask, (x, y), (x+w, y+h), 255, -1)
 
     inv_img = cv2.bitwise_not(img)
